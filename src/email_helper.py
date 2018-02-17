@@ -14,7 +14,7 @@ RECEIVER_EMAILS = ["xuyan.nus@gmail.com", "hongyu.ju@gmail.com"]
 
 
 def email_bid_prices(alerts: pd.DataFrame, to_recipient_columns: List):
-    logging.info(str(alerts))
+    logging.info("str(len(alerts)):" + str(len(alerts)))
 
     if len(alerts) > 0:
         msg = MIMEMultipart()
