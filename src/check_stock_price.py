@@ -50,8 +50,7 @@ def is_an_alert(data):
 
 
 def set_up_logging():
-    formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
-    logging.basicConfig(format=formatter, level=logging.INFO, filename=LOG_PATH)
+    logging.basicConfig(format='%(asctime)s %(message)s', level=logging.INFO, filename=LOG_PATH)
 
 if __name__ == '__main__':
     set_up_logging()
