@@ -1,0 +1,7 @@
+*.pyc
+.idea/
+.cache/
+build/
+dist/
+src/log/
+src/temp/

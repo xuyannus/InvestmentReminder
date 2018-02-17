@@ -1,0 +1,8 @@
+# Python package list
+#
+numpy>=1.12.0
+edn_format==0.5.13
+matplotlib>=2.0
+pandas>=0.21
+quandl
+pytest
