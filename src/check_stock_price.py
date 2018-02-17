@@ -24,7 +24,7 @@ def check_stock_price_shake():
             continue
 
         file_name = item['symbol'].replace('/', '_')
-        plot_path = plot_alert(data, title="{}_{}".format(item['symbol'], item['name']), file_name=file_name)
+        plot_path = plot_alert(data, title="{}".format(item['symbol']), file_name=file_name)
         alerts.append({
             "symbol": item.symbol,
             "name": item.name,
