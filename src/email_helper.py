@@ -1,5 +1,7 @@
 import os
 import smtplib
+
+import logging
 import pandas as pd
 from typing import List
 from email import encoders
@@ -12,6 +14,8 @@ RECEIVER_EMAILS = ["xuyan.nus@gmail.com", "hongyu.ju@gmail.com"]
 
 
 def email_bid_prices(alerts: pd.DataFrame, to_recipient_columns: List):
+    logging.info(str(alerts))
+
     if len(alerts) > 0:
         msg = MIMEMultipart()
         msg['From'] = SENDER_EMAIL

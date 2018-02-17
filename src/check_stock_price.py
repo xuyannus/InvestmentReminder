@@ -1,5 +1,6 @@
 import os
 import time
+import logging
 import pandas as pd
 
 from datetime import datetime, timedelta
@@ -8,6 +9,7 @@ from src.email_helper import email_bid_prices
 from src.plot_helper import plot_alert
 
 SYMBOL_PATH = os.path.dirname(__file__) + "/WIKI-datasets-codes.csv"
+LOG_PATH = os.path.dirname(__file__) + "/stock_alerts.log"
 
 
 def check_stock_price_shake():
@@ -33,7 +35,7 @@ def check_stock_price_shake():
             "plot": plot_path
         })
 
-        time.sleep(0.05)
+        time.sleep(0.1)
     email_bid_prices(pd.DataFrame(alerts), to_recipient_columns=["symbol", "name", "open", "high", "low", "close"])
 
 
@@ -47,5 +49,10 @@ def is_an_alert(data):
     return False
 
 
+def set_up_logging():
+    formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+    logging.basicConfig(format=formatter, level=logging.INFO, filename=LOG_PATH)
+
 if __name__ == '__main__':
+    set_up_logging()
     check_stock_price_shake()
