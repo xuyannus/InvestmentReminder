@@ -12,7 +12,11 @@ def plot_alert(data_df, title, file_name):
     plt.figure(figsize=(12, 10))
     fig, ax = plt.subplots()
     candlestick2_ohlc(ax, data_df['Open'], data_df['High'], data_df['Low'], data_df['Close'], width=0.6, colorup='r', colordown='g')
+    ax.grid(True)
+
     plt.title(title)
+    plt.xlabel("Date")
+    plt.ylabel("Price")
     ax.set_ylim(bottom=0)
     fig.autofmt_xdate()
     fig.tight_layout()

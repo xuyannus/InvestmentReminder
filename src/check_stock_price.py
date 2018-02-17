@@ -8,7 +8,7 @@ from src.data_loader import get_us_stock_historical_price
 from src.email_helper import email_bid_prices
 from src.plot_helper import plot_alert
 
-SYMBOL_PATH = os.path.dirname(__file__) + "/WIKI-datasets-codes.csv"
+SYMBOL_PATH = os.path.dirname(__file__) + "/WIKI-symbol-us.csv"
 LOG_PATH = os.path.dirname(__file__) + "/stock_alerts.log"
 
 
@@ -24,7 +24,7 @@ def check_stock_price_shake():
             continue
 
         file_name = item['symbol'].replace('/', '_')
-        plot_path = plot_alert(data, title=str(item['name']), file_name=file_name)
+        plot_path = plot_alert(data, title="{}_{}".format(item['symbol'], item['name']), file_name=file_name)
         alerts.append({
             "symbol": item.symbol,
             "name": item.name,
@@ -42,9 +42,9 @@ def check_stock_price_shake():
 def is_an_alert(data):
     if len(data) < 5:
         return False
-    if abs(data.iloc[-1]['Close'] - data.iloc[-1]['Open']) >= data.iloc[-1]['Open'] * 0.05:
+    if abs(data.iloc[-1]['Close'] - data.iloc[-1]['Open']) >= data.iloc[-1]['Close'] * 0.05:
         return True
-    if abs(data.iloc[-1]['High'] - data.iloc[-1]['Low']) >= data.iloc[-1]['Open'] * 0.05:
+    if abs(data.iloc[-1]['High'] - data.iloc[-1]['Low']) >= data.iloc[-1]['Close'] * 0.10:
         return True
     return False
 
