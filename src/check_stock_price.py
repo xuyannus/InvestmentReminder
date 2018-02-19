@@ -42,7 +42,7 @@ def check_stock_price_shake():
         })
 
         time.sleep(0.1)
-    email_bid_prices(pd.DataFrame(alerts), to_recipient_columns=["symbol", "name", "open", "high", "low", "close"])
+    email_bid_prices(pd.DataFrame(alerts), to_recipient_columns=["symbol", "name", "open", "high", "low", "close", "RSI"])
 
 
 def is_an_alert(data):
