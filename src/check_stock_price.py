@@ -25,7 +25,7 @@ def check_stock_price_shake():
             continue
 
         RSI = get_RSI(data['Close'])
-        if 30 <= RSI <= 70:
+        if 30 <= RSI[-1] <= 70:
             continue
 
         file_name = item['symbol'].replace('/', '_')
@@ -37,7 +37,7 @@ def check_stock_price_shake():
             "close": data.iloc[-1]['Close'],
             "high": data.iloc[-1]['High'],
             "low": data.iloc[-1]['Low'],
-            "RSI": RSI,
+            "RSI": RSI[-1],
             "plot": plot_path
         })
 
