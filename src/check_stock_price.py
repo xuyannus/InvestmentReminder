@@ -15,7 +15,7 @@ LOG_PATH = os.path.dirname(__file__) + "/stock_alerts.log"
 def check_stock_price_shake():
     symbols = pd.read_csv(SYMBOL_PATH, header=None, names=["symbol", "name"])
     end_date = datetime.now()
-    start_date = end_date - timedelta(days=60)
+    start_date = end_date - timedelta(days=365*5)
 
     alerts = []
     for _, item in symbols.iterrows():
