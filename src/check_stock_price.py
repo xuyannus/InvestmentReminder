@@ -40,6 +40,8 @@ def check_stock_price_shake():
 
 
 def is_an_alert(data):
+    if data.iloc[-1]['Close'] < 5.0:
+        return False
     if len(data) < 5:
         return False
     if abs(data.iloc[-1]['Close'] - data.iloc[-1]['Open']) >= data.iloc[-1]['Close'] * 0.05:
